@@ -1,1 +1,5 @@
-
+将训练的图片放入该目录的train文件夹内,
+图片的命名格式遵循的股则阅读faceRank_with_keras.py文件中load_dataset方法中内容命名
+(主要在于标签的位置与间隔的符号)
+python faceRank_with_keras.py 生成对应的model文件,修改scorePic.py文件中对应内容对新的图片进行分类
+(本质上这里的facescore并不正确,因为更像一个分类的模型,标签由1至9而已)
