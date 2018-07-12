@@ -42,11 +42,20 @@ def make_network():
         )
         )
     model.add(Activation('relu'))#activation function
+    #Relu(rectified linear units)
+    #researchers found out that ReLU layers work far better because the network is able to train a lot faster
+    #(because of the computational efficiency) without making a significant difference to the accurancy.
+    #It also helps to alleviate the vanishing gradient problem, which is the issue where the lower layers
+    #of the network train very slowly because the gradient decreases exponentially through the layers.
+    #related url:
+    #https://adeshpande3.github.io/A-Beginner%27s-Guide-To-Understanding-Convolutional-Neural-Networks-Part-2/
+    #this paper introduce much knowledge about relu function, coventional, pooling
 
     model.add(Conv2D(32, (3, 3)))
     model.add(Activation('relu'))#activation function(rectified linear unit)
 
     model.add(MaxPooling2D(pool_size=(2, 2)))#池化层,Pool_size代表两个方向上的下采样因子
+    #reduce the computation cost and control overfitting
     model.add(Dropout(0.5))#to prevent overfitting with dropout method
 
     model.add(Flatten())#将多维输入一维化,常用于卷基层到全连接层的过渡
