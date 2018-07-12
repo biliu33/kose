@@ -1,0 +1,5 @@
+faceRank:
+https://github.com/fendouai/FaceRank/tree/master/FaceRank_with_keras
+(直接借用了里面的keras部分的代码实现了facescore, 借鉴此以学习keras 模块)
+
+
