@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-@Time    : 2017/8/1 13:37
-@Author  : hadxu
-"""
-
+# coding: utf8
 from keras.models import Sequential, Model
 from keras.layers.core import Dense, Dropout, Flatten, Activation
 from keras.layers.convolutional import Conv2D, MaxPooling2D
@@ -11,6 +6,22 @@ from keras.preprocessing.image import load_img, img_to_array
 from keras.utils import np_utils
 import os
 import numpy as np
+
+
+
+def getLabel(fileName):
+    '''
+    以一定的逻辑从文件名称当中获取标签,实际上也可以以其他方式,重要的是
+    获取到图像,以及其对应的标签,这里的facescore是一个监督学习.
+    '''
+    pass
+
+
+def getImgList(filedir):
+    '''
+    返回全路径
+    '''
+    pass
 
 
 def load_dataset(filedir):
@@ -21,12 +32,11 @@ def load_dataset(filedir):
     """
     image_data_list = []
     label = []
-    train_image_list = os.listdir(filedir + '/train')
+    train_image_list = getImgList(filedir)
     for img in train_image_list:
-        url = os.path.join(filedir + '/train/' + img)
-        image = load_img(url, target_size=(128, 128))
+        image = load_img(img, target_size=(128, 128))
         image_data_list.append(img_to_array(image))
-        label.append(img.split('-')[0])
+        label.append(getLabel(img))
     img_data = np.array(image_data_list)
     img_data = img_data.astype('float32')
     img_data /= 255#it seems that we divide 255 so that the value ranges in (0, 1)(normaliztion)
